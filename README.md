@@ -1,2 +1,2 @@
 # flexTest
-Some basic uses of flex
+本部分是根据阮一峰老师的教程联系的一些常用功能
