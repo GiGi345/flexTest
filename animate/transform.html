@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<style>
+    /* 
+        Internet Explorer 10、Firefox、Opera 和 Chrome 支持 transition 属性。
+        Safari 支持替代的 -webkit-transition 属性。
+    */
+    .transf{
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        color: #fff;
+        text-align: center;
+        background-color: #eb4e05;
+        transition: all 2s ease;
+        -webkit-transition: all 2s ease;
+        -moz-transition: all 2s ease;
+        -ms-transition: all 2s ease;
+        -o-transition: all 2s ease;
+        cursor: pointer;
+        position:fixed;
+        top: 300px;
+        left: 300px;
+    }
+    /* transform 变换  rotate scale */
+
+    /* 
+         Internet Explorer 10、Firefox、Opera 支持 transform 属性 
+         Internet Explorer 9 支持替代的 -ms-transform 属性（仅适用于 2D 转换）
+         Safari 和 Chrome 支持替代的 -webkit-transform 属性（3D 和 2D 转换）
+         Opera 只支持 2D 转换。  
+    */
+
+    .transf:hover{
+        transform: rotate(720deg) scale(2,2);
+        -webkit-transform: rotate(720deg) scale(2,2);
+        -moz-transform: rotate(720deg) scale(2,2);
+        -ms-transform: rotate(720deg) scale(2,2);
+        -o-transform: rotate(720deg) scale(2,2);
+    }
+</style>
+<body>
+    <div class="transf">摸我</div>
+</body>
+</html>
