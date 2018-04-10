@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app1" :title="timeNow" v-if="see">
+        {{ message }}
+        <input type="text" v-model="message">
+        <ul v-for="color in colors">
+            <li @click="changeColor">{{color}}</li>
+        </ul>
+        <div>{{changeedColor}}</div>
+        <ol>
+            <todo-item v-for="color in colors" v-bind:todo="color"></todo-item>
+        </ol>
+        <p>我想在这边看看{{rawHtml}}</p>
+        <p>这边是什么鬼 <span v-html="rawHtml"></span></p>
+    </div>
+    <script>
+        Vue.component('todo-item', {
+            props: ['todo'],
+            template: '<li>{{todo}}</li>'
+        })
+        var app1 = new Vue({
+            el: "#app1",
+            data: {
+                see: true,
+                message: "我是小qq喜欢的颜色",
+                timeNow: new Date().toLocaleString(),
+                colors: ["yellow", "red", "blue"],
+                hobby:[{
+                    "id":2
+                }],
+                rawHtml:"我是插入html"
+            },
+            computed: {
+                changeedColor(){
+                    return this.message.split('').reverse().join('');
+                }
+            },
+            methods: {
+                changeColor: function () {
+                    this.message = this.message.split('').reverse().join('');
+                },
+            }
+        })
+
+
+    </script>
+
+</body>
+
+</html>
