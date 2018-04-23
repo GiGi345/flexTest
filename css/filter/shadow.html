@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>filter模拟渐变的阴影效果</title>
+</head>
+<style>
+    /*  原理:
+        利用伪元素，生成一个与原图一样大小的新图叠加在原图之下，
+        然后利用滤镜模糊 filter: blur() 配合其他的亮度/对比度，透明度等滤镜，
+        制作出一个虚幻的影子，伪装成原图的阴影效果。 
+    */
+    .portrait{
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: url("images/1.jpg") no-repeat center center;
+        z-index: 10;
+    }
+    .portrait::after{
+        content:"";
+        width: inherit;
+        height: inherit;
+        border-radius: 50%;
+        position: absolute;
+        background: inherit;
+        background-size: 100% 100%;
+        top:10px;
+        filter: blur(10px) brightness(83%);
+        z-index: -1;
+    }
+</style>
+<body>
+    <div class="portrait"></div>
+</body>
+</html>
