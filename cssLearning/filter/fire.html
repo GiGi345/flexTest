@@ -8,6 +8,13 @@
     <title>火焰效果</title>
 </head>
 <style>
+    /* 原理：
+        1. 先将.fire 设置为 下方背景颜色为#b5932f黄色的 三角，其他三面边框为黑色
+        2.设置transform变形  成小火堆的形状
+        3.设置过滤器的高斯模糊blur和对比度contrast，使的颜色更像火
+        4.再使用多个小黑点dot从距离顶部28px的地方设置动画上来
+        5.本例实现为简单模式，详看原作者 https://codepen.io/Chokcoco/pen/GvbMmE
+    */
     body {
         display: flex;
         justify-content: center;
@@ -20,40 +27,42 @@
         border-bottom: 200px solid #b5932f;
         border-radius: 41%;
         transform: scaleX(0.6);
-        filter: blur(5px) contrast(20);
+        filter: blur(13px) contrast(20);
     }
 
-    .dot {
-        width: 25px;
-        height: 25px;
+    .dot,.dot1,.dot2,.dot3{
+        width: 19px;
+        height: 41px;
         border-radius: 50%;
         background-color: #000;
-        filter: blur(12px);
+        filter: blur(6px);
         position: absolute;
-        bottom: -120px;
-        animation: move 10s;
+        top: 28px;
+        animation: move 20s;
+    }
+    .dot1,.dot3{
+        position: absolute;
+        left: -45px;
+        top: 60px;
+    }
+    .dot2,.dot3{
+        animation: move 30s linear 30s;
     }
 
     @keyframes move {
-        0% {
-            bottom: -200px;
-        }
-        50% {
-            bottom: -150px;
+        80% {
+            transform: translate3d(0, -350px, 0);
         }
     }
 </style>
 
 <body>
     <div class="fire">
-        <div class
-        
-
-
-
-
-        
-
+        <div class="dot"></div>
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+        <div class="dot3"></div>
+    </div>
 </body>
 
 </html>
